@@ -1,7 +1,8 @@
 from database import get_conn
 
-def all():
 
+#switch functions
+def all():
 	conn=get_conn()
 	cursor=conn.cursor()
 
@@ -16,7 +17,6 @@ def all():
 	return switch
 
 def specific(name):
-
 	conn=get_conn()
 	cursor=conn.cursor()
 
@@ -32,7 +32,6 @@ def specific(name):
 	return switch
 
 def remove(name):
-
 	conn=get_conn()
 	cursor=conn.cursor()
 
@@ -40,9 +39,8 @@ def remove(name):
 		"DELETE FROM switch WHERE name = ?", (name, )
 			)
 
-	#confirmation=f"{name} switch decomissioned successfully"
 	conn.commit()
 	conn.close()
 
-	#return confirmation
 
+#station routes

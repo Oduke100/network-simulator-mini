@@ -1,5 +1,5 @@
 from switch import MSC
-from database import init_db
+from models import init_db
 from router import all, specific, remove
 
 init_db()
