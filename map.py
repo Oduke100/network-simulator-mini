@@ -1,0 +1,15 @@
+# this is the file that will hold the distribution data of the modules in this project
+# this is a rough boundary estimate of the country Kenya, ofc we are looking at improving
+#but for now this will have to work
+#format: north, south, east, west, name
+
+boundaries=[
+    -1.16, -1.44, 37.10, 36.65, Nairobi,
+    -0.20, -1.30, 37.60, 36.40, Central,
+    -1.60, -4.70, 41.90, 38.00, Coast,
+    4.00, -3.00, 40.00, 37.00, Eastern,
+    4.00, -1.50, 41.90, 38.00, North Eastern,
+    0.20, -1.50, 35.30, 33.90, Nyanza,
+    4.60, -3.00, 37.00, 34.80, Rift Valley,
+    1.10, 0.00, 35.00, 33.90, Western
+]

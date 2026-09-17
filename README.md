@@ -3,6 +3,7 @@
 This is a small project to simulate the working of a network.
 It's built entirely on my perception of a network and with minimal research, this is not to be rigid and/or rude but I think step one of understanding sth
 is explaining how it works in your words and this is me doing just that
+in the course of development, I tuned the system to work with the configs of the country Kenya, any tweaks are allowed as its Open Source to the `map.py` and `prox.py`
 
 ## WORKPLAN
 
