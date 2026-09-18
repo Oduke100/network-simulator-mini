@@ -1,5 +1,8 @@
 #folders I want not tracked;
 docs/
+misc/   #this is what houses the misclaneous stuff for the project
+
+
 
 #a .env just incase coz, idk you never know and to add flesh to my file
 .env

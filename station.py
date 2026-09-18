@@ -34,5 +34,8 @@ class Station:
 		cursor.execute(
 			"INSERT INTO station (name, latitude, longitude, altitude, switch_id)"
 		)
-juja=Station(location, ccode)
-juja.check_location()
+
+
+
+#juja=Station(location, ccode)
+#juja.check_location()
