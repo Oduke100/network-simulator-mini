@@ -16,6 +16,7 @@ assets/
 			New thing I learnt today, you dont just add like .db you add a * before it its called a wildcard this will make the file watch out for
 			    everything with that extension
 		"""
-# .txt		#frozen as there are genuine .txt extensions that I wanna have in my project Git
+#.txt		#frozen as there are genuine .txt extensions that I wanna have in my project Git
+
 test.py		#settled as a standard for all my projects a test.py is just that a test file and will remain that way for all my projects
 
