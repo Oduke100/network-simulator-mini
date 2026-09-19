@@ -1,0 +1,21 @@
+### MULTI-USE .GITIGNORE
+
+## Folders
+#will mainly house misc(the misclaneous objects and aspects of the project) and docs(the non-published/ personal documentation) of the project
+
+__pycache__  	#working cache for the system and project
+docs/
+misc/
+assets/
+
+## Files
+
+.env
+*.db		#ensures we don't commit our database to the internet
+		"""
+			New thing I learnt today, you dont just add like .db you add a * before it its called a wildcard this will make the file watch out for
+			    everything with that extension
+		"""
+# .txt		#frozen as there are genuine .txt extensions that I wanna have in my project Git
+test.py		#settled as a standard for all my projects a test.py is just that a test file and will remain that way for all my projects
+
