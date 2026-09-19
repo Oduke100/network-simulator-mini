@@ -5,7 +5,7 @@
 
 __pycache__  	#working cache for the system and project
 docs/
-misc/
+# misc/
 assets/
 
 ## Files
