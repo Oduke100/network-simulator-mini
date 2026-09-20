@@ -11,7 +11,7 @@ assets/
 ## Files
 
 .env
-.pyc		#code cache
+*.pyc		#code cache
 *.db		#ensures we don't commit our database to the internet
 		"""
 			New thing I learnt today, you dont just add like .db you add a * before it its called a wildcard this will make the file watch out for
