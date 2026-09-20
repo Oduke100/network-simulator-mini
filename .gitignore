@@ -3,7 +3,7 @@
 ## Folders
 #will mainly house misc(the misclaneous objects and aspects of the project) and docs(the non-published/ personal documentation) of the project
 
-__pycache__  	#working cache for the system and project
+*__pycache__  	#working cache for the system and project
 docs/
 # misc/
 assets/
