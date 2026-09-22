@@ -19,9 +19,53 @@ def subnet(subnet_mask):
     # subnet= ' '.join(format(ord(char), '08b') for char in octets)
     return subnet
 
-def ip_addr(subnet_mask):
+def get_blocked_ip(subnet_mask):
+    b=subnet(subnet_mask)
+
+    blocked_broadcast_ips = []
+    blocked_network_ips = []
+    for i in range(len(b)):
+        if i == 0:
+            continue
+
+        octet = b[i]
+        counter = 0
+        decimal_ip_value = 0
+        
+        if "0" in octet:
+            for char in octet:
+                if char == "0":
+                    counter += 1
+
+                
+                # decimal conversion of binary
+                for char in octet:
+                    decimal_ip_value = decimal_ip_value * 2 + int(char)
+
+                broadcast_ip = decimal_ip_value + (2**counter - 1)
+                network_ip = decimal_ip_value - decimal_ip_value
+            blocked_broadcast_ips.append(broadcast_ip)
+            blocked_network_ips.append(network_ip)
+
+        else:
+            broadcast_ip = decimal_ip_value
+            network_ip = decimal_ip_value - decimal_ip_value
+            
+            blocked_broadcast_ips.append(broadcast_ip)
+            blocked_network_ips.append(network_ip)
+
+    blocked_broadcast_ips.insert(0, 10)
+    blocked_network_ips.insert(0, 10)
+
+    blocked_broadcast_ip = ".".join(str(x) for x in blocked_broadcast_ips)
+    blocked_network_ip = ".".join(str(x) for x in blocked_network_ips)
+
+    return blocked_broadcast_ip, blocked_network_ip
+
+def assign_ip_addr(subnet_mask):
 
     s=subnet(subnet_mask)
+    # i=get_blocked_ip()
     
     # for octet in s:
     #   for char in octet:
@@ -62,5 +106,18 @@ def ip_addr(subnet_mask):
     
     return full_ip
 
-#ip=ip_addr("255.255.0.0")
-#print(ip)
+def ip_addr(subnet_mask):
+    # get the blocked_ips
+    a=get_blocked_ip(subnet_mask)
+    # get the assigned ip
+    c=assign_ip_addr(subnet_mask)
+    # return a
+
+    # check
+    if c in a:
+        c = assign_ip_addr(subnet_mask)
+    else:
+        return c
+    
+#blocked_ip=get_blocked_ip("255.255.0")
+#print(blocked_ip)
