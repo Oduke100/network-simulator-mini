@@ -21,7 +21,7 @@ class Computer:
             )
 
 samsung=Computer("Samsung", "computer", "255.0.0.0")
-dell=Computer("dell", "computer", "255.0.0.0")
+dell=Computer("dell", "computer", "255.255.255.0")
 
 samsung.info()
 dell.info()
