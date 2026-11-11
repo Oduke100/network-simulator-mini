@@ -1,13 +1,9 @@
-#folders I want not tracked;
-docs/
+# files
+foo.md
+devlog.md
+misc/test.py
 
-#a .env just incase coz, idk you never know and to add flesh to my file
-.env
+# folders
 
-#we add a .db one so that we dont commit our database to the net LOL
-#new thing I learnt today, you dont just add like .db you add a * before it its called a wildcard this will make the file watch out for everything with that
-#extensiom
-*.db
-
-#we add a block to the other mambo jumbo that we have had since the commencing of work by our system
+# cache
 *__pycache__
