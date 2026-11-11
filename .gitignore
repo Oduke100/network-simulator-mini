@@ -1,0 +1,10 @@
+# files
+foo.md
+devlog.md
+misc/test.py
+
+# folders
+/network
+
+# cache
+*__pycache__
