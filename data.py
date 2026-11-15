@@ -13,8 +13,16 @@ class Packet:
 
         return packet
 
-    def send_packet(self, sourceIp, destinationIp):
-        return self.make_packet(sourceIp, destinationIp)
+    def send_packet(self, destinationIp):
+        packet = self.make_packet(self.data)
 
-    def receive_packet(self, sourceIp, destinationIp):
-        return self.make_packet(sourceIp, destinationIp)
+        packet["destinationIp"] = destinationIp
+
+        return f"data sent to {destinationIp}"
+
+    def receive_packet(self, sourceIp):
+        packet = self.make_packet(self.data)
+
+        packet["sourceIp"] = sourceIp
+
+        return f"data received from {sourceIp}"

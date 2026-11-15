@@ -1,19 +1,12 @@
-import os
 from devices import Computer
 from data import Packet
-from network import Network
 
-directory = "network"
+data = Packet("Hello World!")
+data.make_packet()
 
-os.makedirs(directory, exist_ok=True)
+ipAddrA = Computer("102.209.57.50")
+ipAddrB = Computer("102.209.57.51")
 
-# safaricom = Network("safaricom", "saf_5G")
-# safaricom_ip = safaricom.issue_ip()
-# print(safaricom_ip)
-
-hellen = Computer("hellen")
-oduke  = Computer("oduke")
-
-
-hellen.nyx()
-oduke.nyx()
+# conf = data.send_packet(ipAddrA)
+conf = data.receive_packet(ipAddrB)
+print(conf)

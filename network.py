@@ -1,6 +1,4 @@
-import os
 import math
-import json
 import random
 from misc.converter import Data
 from misc.converter import Data
@@ -57,19 +55,12 @@ def get_subnet(users=1000):
 
     return subnet_values
 
-def get_ip(kind="user"):
-
-    ref_table = {
-        "network" : "102",
-        "user"    : "10"
-    }
-    
+def get_ip(prefix="102"):
     START = 0
     END   = 255
     
     ip: [str] = []
 
-    prefix = ref_table[kind]
     ip.append(prefix)
     
     for i in range(0, 3):
@@ -79,103 +70,42 @@ def get_ip(kind="user"):
     ip = ".".join(i for i in ip)
     return ip
 
-# ==== CLASSES ====
 class Network:
-    dirpath = "network/ips"
-    os.makedirs(dirpath, exist_ok=True)
-        
-    nfilepath = "network/ips/network_ips.json"
-    
     def __init__(self, name="Aether_networks", isp_name="Aether_5G"):
         self.name     = name
         self.isp_name = isp_name
-        
+
     def issue_subnet(self, users):
         subnet = get_subnet(users)
+        network_ip = get_ip()
 
-        return subnet
-        
-    def issue_ip(self, users=1000000, kind="network"):
-        dirpath = "network/ips"
-        os.makedirs(dirpath, exist_ok=True)
-        
-        nfilepath = "network/ips/network_ips.json"
-        
-        try:
-            with open(nfilepath, "x") as file:
-                file.close()
-        except:
-            print("file already exists!")
-            
-        ips = []
-        subnet = self.issue_subnet(users)
-            
-        with open(nfilepath, "r") as file:
-            for f in file:
-                ips.append(json.loads(f))
-                
-        for i in ips:
-            if i["isp_name"] == self.isp_name:
-                return f"ISP live, reach at {i["ip"]}"
-
-        ip = get_ip(kind)
-        if any(i["ip"] == ip for i in ips):
-            ip = get_ip(kind)
-
-        ip_record = {}
-
-        ip_record = {
-            "name" : self.name,
-            "isp_name" : self.isp_name,
-            "ip"   : ip,
-            "subnet" : subnet
-        }
-
-        with open(nfilepath, "a") as file:
-            json.dump(ip_record, file)
-            file.write("\n")
-
-        return f"ISP registered, reach at {ip}"
-
+        return subnet, network_ip
+    
 class User:
     def __init__(self):
         pass
         
-    def issue_ip(self, name, isp_name, kind="user"):
-        dirpath = "network/ips"
-        os.makedirs(dirpath, exist_ok=True)
+    def create_uplink(self, users):
+        uplink = Network()
+        subnet = uplink.issue_subnet(users)
 
-        ufilepath = "network/ips/users_ips.json"
+        return subnet
+
+    def issue_ip(self):
+        user_ip = get_ip()
         
-        try:
-            with open(ufilepath, "x") as file:
-                file.close()
-        except:
-            print("file already exists!")
-            
-        ips = []
 
-        with open(ufilepath, "r") as file:
-            for f in file:
-                ips.append(json.loads(f))
 
-        for i in ips:
-            if i["name"] == name:
-                return i["ip"]
 
-        ip = get_ip(kind)
-        if any(i["ip"] == ip for i in ips):
-            ip = get_ip(kind)
 
-        ip_record = {}
+michael = User()
+michael_subnet = michael.create_uplink(1000)
+michael_ip = michael.issue_ip()
+print(michael_subnet)
 
-        ip_record = {
-            "name" : name,
-            "ip"   : ip
-        }
+# aether = Network()
+# aether_subnet = aether.issue_subnet(50000000)
+# print(aether_subnet)
 
-        with open(ufilepath, "a") as file:
-            json.dump(ip_record, file)
-            file.write("\n")
-
-        return ip
+# ip = get_ip()
+# print(ip)
