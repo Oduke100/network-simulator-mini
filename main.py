@@ -1,12 +1,8 @@
+import os
 from devices import Computer
 from data import Packet
+from network import Network
 
-data = Packet("Hello World!")
-data.make_packet()
+directory = "network"
 
-ipAddrA = Computer("102.209.57.50")
-ipAddrB = Computer("102.209.57.51")
-
-# conf = data.send_packet(ipAddrA)
-conf = data.receive_packet(ipAddrB)
-print(conf)
+os.makedirs(directory, exist_ok=True)
