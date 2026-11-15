@@ -1,5 +1,6 @@
 # files
 foo.md
+!misc/foo.md
 devlog.md
 misc/test.py
 
@@ -7,4 +8,4 @@ misc/test.py
 /network
 
 # cache
-*__pycache__
+__pycache__/
